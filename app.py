@@ -4,22 +4,22 @@ from flask_restful import Api, Resource
 app = Flask(__name__)
 api = Api(app)
 
-# Contoh data produk skincare dengan deskripsi
-products = [
-    {"id": 1, "name": "Facial Cleanser", "price": 120, "description": "Pembersih wajah untuk mengangkat kotoran dan minyak berlebih tanpa mengeringkan kulit."},
-    {"id": 2, "name": "Hydrating Toner", "price": 150, "description": "Toner yang melembapkan dan menenangkan kulit, membantu mengembalikan pH alami kulit."},
-    {"id": 3, "name": "Vitamin C Serum", "price": 250, "description": "Serum dengan vitamin C untuk mencerahkan kulit dan mengurangi tanda-tanda penuaan."},
-    {"id": 4, "name": "Moisturizer", "price": 180, "description": "Pelembap yang menjaga kelembapan kulit sepanjang hari, cocok untuk semua jenis kulit."},
-    {"id": 5, "name": "Sunscreen SPF 50", "price": 200, "description": "Tabir surya dengan SPF 50 untuk melindungi kulit dari sinar UV berbahaya dan mencegah penuaan dini."}
+# Contoh data produk batik dengan deskripsi dan alamat
+batik_products = [
+    {"id": 1, "name": "Batik Mega Mendung", "price": 500000, "description": "Motif batik klasik dengan pola awan yang elegan, asal Cirebon.", "address": "Jalan Batik Mega No. 10, Cirebon"},
+    {"id": 2, "name": "Batik Parang", "price": 450000, "description": "Motif batik tradisional dari Yogyakarta dengan pola parang yang melambangkan kekuatan.", "address": "Jalan Malioboro No. 20, Yogyakarta"},
+    {"id": 3, "name": "Batik Kawung", "price": 400000, "description": "Batik dengan motif kawung berbentuk lingkaran yang melambangkan kemurnian, asal Solo.", "address": "Jalan Slamet Riyadi No. 15, Solo"},
+    {"id": 4, "name": "Batik Sekar Jagad", "price": 550000, "description": "Motif yang melambangkan keindahan dan keragaman dunia, populer di Jawa Tengah.", "address": "Jalan Diponegoro No. 30, Semarang"},
+    {"id": 5, "name": "Batik Lasem", "price": 600000, "description": "Batik dengan perpaduan warna merah khas dan motif dari Lasem, Jawa Tengah.", "address": "Jalan Merah Lasem No. 25, Lasem"}
 ]
 
 class ProductList(Resource):
     def get(self):
-        return jsonify(products)
+        return jsonify(batik_products)
 
 class ProductDetail(Resource):
     def get(self, product_id):
-        product = next((p for p in products if p["id"] == product_id), None)
+        product = next((p for p in batik_products if p["id"] == product_id), None)
         if product:
             return jsonify(product)
         return {"message": "Product not found"}, 404
@@ -28,17 +28,18 @@ class AddProduct(Resource):
     def post(self):
         data = request.get_json()
         new_product = {
-            "id": len(products) + 1,
+            "id": len(batik_products) + 1,
             "name": data["name"],
             "price": data["price"],
-            "description": data.get("description", "No description provided.")
+            "description": data.get("description", "No description provided."),
+            "address": data.get("address", "No address provided.")
         }
-        products.append(new_product)
+        batik_products.append(new_product)
         return jsonify(new_product)
 
 class UpdateProduct(Resource):
     def put(self, product_id):
-        product = next((p for p in products if p["id"] == product_id), None)
+        product = next((p for p in batik_products if p["id"] == product_id), None)
         if not product:
             return {"message": "Product not found"}, 404
         data = request.get_json()
@@ -47,8 +48,8 @@ class UpdateProduct(Resource):
 
 class DeleteProduct(Resource):
     def delete(self, product_id):
-        global products
-        products = [p for p in products if p["id"] != product_id]
+        global batik_products
+        batik_products = [p for p in batik_products if p["id"] != product_id]
         return {"message": "Product deleted successfully"}
 
 # Menambahkan resource ke API

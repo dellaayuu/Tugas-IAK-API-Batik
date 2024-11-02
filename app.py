@@ -5,7 +5,7 @@ app = Flask(__name__)
 api = Api(app)
 
 # Example data of batik products
-batik_products = [
+batik = [
     {
         "id": 1,
         "name": "Batik Tulis Pekalongan",
@@ -80,11 +80,11 @@ batik_products = [
 
 class BatikProductList(Resource):
     def get(self):
-        return jsonify(batik_products)
+        return jsonify(batik)
 
 class BatikProductDetail(Resource):
     def get(self, product_id):
-        product = next((p for p in batik_products if p["id"] == product_id), None)
+        product = next((p for p in batik if p["id"] == product_id), None)
         if product:
             return jsonify(product)
         return {"message": "Product not found"}, 404
@@ -93,18 +93,18 @@ class AddBatikProduct(Resource):
     def post(self):
         data = request.get_json()
         new_product = {
-            "id": len(batik_products) + 1,
+            "id": len(batik) + 1,
             "name": data["name"],
             "description": data.get("description", "No description provided"),
             "price": data["price"],
             "address": data.get("address", "No address provided")
         }
-        batik_products.append(new_product)
+        batik.append(new_product)
         return jsonify(new_product)
 
 class UpdateBatikProduct(Resource):
     def put(self, product_id):
-        product = next((p for p in batik_products if p["id"] == product_id), None)
+        product = next((p for p in batik if p["id"] == product_id), None)
         if not product:
             return {"message": "Product not found"}, 404
         data = request.get_json()
@@ -113,8 +113,8 @@ class UpdateBatikProduct(Resource):
 
 class DeleteBatikProduct(Resource):
     def delete(self, product_id):
-        global batik_products
-        batik_products = [p for p in batik_products if p["id"] != product_id]
+        global batik
+        batik = [p for p in batik if p["id"] != product_id]
         return {"message": "Product deleted successfully"}
 
 # Adding resources to the API

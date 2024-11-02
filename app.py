@@ -10,7 +10,17 @@ products = [
     {"id": 2, "name": "Batik Parang", "price": 300000, "description": "Motif batik parang yang melambangkan kekuatan dan keberanian."},
     {"id": 3, "name": "Batik Mega Mendung", "price": 280000, "description": "Motif batik dari Cirebon yang menggambarkan awan mendung, simbol kesejukan."},
     {"id": 4, "name": "Batik Sekar Jagad", "price": 320000, "description": "Motif yang melambangkan keindahan dan keragaman budaya Indonesia."},
-    {"id": 5, "name": "Batik Tulis Sidomukti", "price": 400000, "description": "Batik tulis khas Solo dengan motif yang sering digunakan pada acara pernikahan."}
+    {"id": 5, "name": "Batik Tulis Sidomukti", "price": 400000, "description": "Batik tulis khas Solo dengan motif yang sering digunakan pada acara pernikahan."},
+    {"id": 6, "name": "Batik Truntum", "price": 350000, "description": "Batik tradisional yang melambangkan cinta yang tulus dan abadi."},
+    {"id": 7, "name": "Batik Lasem", "price": 370000, "description": "Batik dengan pengaruh budaya Tionghoa, terkenal dengan warna merah cerah."},
+    {"id": 8, "name": "Batik Priyangan", "price": 330000, "description": "Batik khas Priangan dengan motif yang terinspirasi oleh alam."},
+    {"id": 9, "name": "Batik Bali", "price": 290000, "description": "Batik dari Bali dengan motif yang menggabungkan unsur budaya lokal."},
+    {"id": 10, "name": "Batik Tambal", "price": 310000, "description": "Motif batik yang mencerminkan kehidupan yang dinamis dan keberagaman."},
+    {"id": 11, "name": "Batik Lereng", "price": 260000, "description": "Batik dengan pola garis-garis diagonal yang melambangkan ketekunan."},
+    {"id": 12, "name": "Batik Ceplok", "price": 275000, "description": "Motif geometris yang terinspirasi dari bentuk bunga dan alam."},
+    {"id": 13, "name": "Batik Sogan", "price": 360000, "description": "Batik khas Solo dengan warna cokelat tua, cocok untuk acara formal."},
+    {"id": 14, "name": "Batik Pisan Bali", "price": 340000, "description": "Motif batik dengan detail yang unik dan warna yang mencolok."},
+    {"id": 15, "name": "Batik Tumpal", "price": 300000, "description": "Batik tradisional dengan pola segitiga yang melambangkan kesejahteraan."}
 ]
 
 class ProductList(Resource):
